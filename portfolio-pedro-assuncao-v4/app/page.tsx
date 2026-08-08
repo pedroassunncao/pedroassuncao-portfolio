@@ -62,13 +62,13 @@ const projectMeta = [
   {
     number: "02",
     stack: ["Next.js", "TypeScript", "UX"],
-    href: "https://projeto-02-nexus-dashboard.vercel.app"
+    href: "https://projeto-03-web-security-lab.vercel.app/"
   },
   
   {
     number: "03",
     stack: ["OWASP", "Linux", "Web Security"],
-    href: "https://projeto-03-web-security-lab.vercel.app"
+    href: "#"
   },
 ];
 
