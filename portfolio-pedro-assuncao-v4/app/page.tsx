@@ -56,19 +56,19 @@ const projectMeta = [
   {
     number: "01",
     stack: ["React", "TypeScript", "CSS"],
-    href: "https://projeto-protese-capilar-alpha.vercel.app/"
+   href: "/projetos?projeto=1"  
   },
 
   {
     number: "02",
     stack: ["Next.js", "TypeScript", "UX"],
-    href: "https://projeto-02-nexus-dashboard.vercel.app/"
+    href: "/projetos?projeto=2"
   },
   
   {
     number: "03",
     stack: ["OWASP", "Linux", "Web Security"],
-    href: "https://projeto-03-web-security-lab.vercel.app/"
+    href: "/projetos?projeto=3"
   },
 ];
 
