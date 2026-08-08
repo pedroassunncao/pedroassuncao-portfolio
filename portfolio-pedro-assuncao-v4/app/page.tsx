@@ -53,9 +53,23 @@ const technologies = [
 ];
 
 const projectMeta = [
-  { number: "01", stack: ["React", "TypeScript", "CSS"], href: "#" },
-  { number: "02", stack: ["Next.js", "TypeScript", "UX"], href: "#" },
-  { number: "03", stack: ["OWASP", "Linux", "Web Security"], href: "#" },
+  {
+    number: "01",
+    stack: ["React", "TypeScript", "CSS"],
+    href: "https://projeto-protese-capilar.vercel.app"
+  },
+
+  {
+    number: "02",
+    stack: ["Next.js", "TypeScript", "UX"],
+    href: "#"
+  },
+
+  {
+    number: "03",
+    stack: ["OWASP", "Linux", "Web Security"],
+    href: "#"
+  },
 ];
 
 const translations: Record<Language, Copy> = {
@@ -457,7 +471,7 @@ export default function Home() {
 
         <div className="projectList">
           {projectMeta.map((project, index) => (
-            <a className="projectCard" href={project.href} key={project.number}>
+            <a className="projectCard" href={project.href}  target="_blank"  rel="noopener noreferrer" key={project.number}>
               <div className="projectNumber">{project.number}</div>
               <div className="projectContent">
                 <h3>{copy.projects[index].title}</h3>
