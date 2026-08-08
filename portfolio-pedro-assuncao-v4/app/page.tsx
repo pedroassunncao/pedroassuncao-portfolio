@@ -62,20 +62,20 @@ const projectMeta = [
   {
     number: "02",
     stack: ["Next.js", "TypeScript", "UX"],
-    href: "#"
+    href: "https://projeto-02-nexus-dashboard.vercel.app"
   },
-
+  
   {
     number: "03",
     stack: ["OWASP", "Linux", "Web Security"],
-    href: "#"
+    href: "https://projeto-03-web-security-lab.vercel.app"
   },
 ];
 
 const translations: Record<Language, Copy> = {
   pt: {
     nav: { about: "Sobre", projects: "Projetos", stack: "Stack", contact: "Contato", cta: "Vamos conversar" },
-    eyebrow: "PEDRO ASSUNÇÃO / PORTFÓLIO 2026",
+    eyebrow: "PEDRO ASSUNÇÃO / PORTFÓLIO",
     heroLine1: "Frontend que performa.",
     heroLine2: "Segurança que sustenta.",
     heroText:
@@ -126,7 +126,7 @@ const translations: Record<Language, Copy> = {
   },
   en: {
     nav: { about: "About", projects: "Projects", stack: "Stack", contact: "Contact", cta: "Let's talk" },
-    eyebrow: "PEDRO ASSUNÇÃO / PORTFOLIO 2026",
+    eyebrow: "PEDRO ASSUNÇÃO / PORTFOLIO",
     heroLine1: "Frontend that performs.",
     heroLine2: "Security that holds.",
     heroText:
@@ -177,7 +177,7 @@ const translations: Record<Language, Copy> = {
   },
   es: {
     nav: { about: "Sobre mí", projects: "Proyectos", stack: "Stack", contact: "Contacto", cta: "Hablemos" },
-    eyebrow: "PEDRO ASSUNÇÃO / PORTAFOLIO 2026",
+    eyebrow: "PEDRO ASSUNÇÃO / PORTAFOLIO",
     heroLine1: "Frontend que rinde.",
     heroLine2: "Seguridad que sostiene.",
     heroText:
