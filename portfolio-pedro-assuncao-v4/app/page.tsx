@@ -471,7 +471,7 @@ export default function Home() {
 
         <div className="projectList">
           {projectMeta.map((project, index) => (
-            <a className="projectCard" href={project.href}  target="_blank"  rel="noopener noreferrer" key={project.number}>
+            <a className="projectCard" href={project.href}  key={project.number}>
               <div className="projectNumber">{project.number}</div>
               <div className="projectContent">
                 <h3>{copy.projects[index].title}</h3>
