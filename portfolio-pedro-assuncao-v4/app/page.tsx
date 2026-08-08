@@ -552,8 +552,23 @@ export default function Home() {
       <footer className="footer">
         <span>© 2026 Pedro Assunção</span>
         <div className="socials">
-          <a href="https://github.com/pedroassunncao" aria-label="GitHub"><GithubIcon /></a>
-          <a href="https://linkedin.com/in/pedroassunncao" aria-label="LinkedIn"><LinkedinIcon /></a>
+         <a
+  href="https://github.com/pedroassunncao"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="GitHub"
+>
+  <GithubIcon />
+</a>
+
+<a
+  href="https://www.linkedin.com/in/pedroassunncao/"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="LinkedIn"
+>
+  <LinkedinIcon />
+</a>
         </div>
         <a href="#inicio">{copy.backTop}</a>
       </footer>
