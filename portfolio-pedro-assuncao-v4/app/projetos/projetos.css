@@ -32,9 +32,7 @@ a {
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 78% 23%, var(--p-accent-soft), transparent 28rem),
-    linear-gradient(180deg, #0a0a0c 0%, #070708 100%);
+  background: var(--p-bg);
   color: var(--p-text);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   transition: --p-accent .35s ease;
@@ -58,39 +56,6 @@ a {
   --p-accent-soft: rgba(33, 134, 93, 0.13);
 }
 
-.projectNoise {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.22;
-  background-image:
-    linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.01) 1px, transparent 1px);
-  background-size: 34px 34px;
-}
-
-.projectGlow {
-  position: fixed;
-  width: 34rem;
-  height: 34rem;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(90px);
-  opacity: 0.08;
-  background: var(--p-accent-bright);
-}
-
-.projectGlowOne {
-  top: -17rem;
-  right: -10rem;
-}
-
-.projectGlowTwo {
-  bottom: -20rem;
-  left: -16rem;
-}
-
 .projectsHeader,
 .showcase,
 .projectsFooter {
@@ -106,8 +71,7 @@ a {
   gap: 28px;
   padding: 0 clamp(22px, 4.4vw, 76px);
   border-bottom: 1px solid var(--p-line);
-  background: rgba(9, 9, 11, 0.68);
-  backdrop-filter: blur(18px);
+  background: rgba(9, 9, 11, 0.96);
 }
 
 .projectsBrand {
@@ -168,7 +132,6 @@ a {
 
 .backPortfolio svg,
 .projectActions svg,
-.browserBar svg,
 .navArrow svg {
   width: 15px;
   height: 15px;
@@ -379,7 +342,6 @@ a {
   color: white;
   background: var(--p-accent);
   border: 1px solid var(--p-accent-bright);
-  box-shadow: 0 12px 34px var(--p-accent-soft);
 }
 
 .projectSecondary {
@@ -402,128 +364,57 @@ a {
   min-width: 0;
 }
 
-.previewFrame {
-  overflow: hidden;
+.projectBrief {
+  min-height: 430px;
+  padding: clamp(30px, 5vw, 68px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   border: 1px solid rgba(255,255,255,.11);
-  border-radius: 16px;
-  background: #0c0c0f;
-  box-shadow:
-    0 40px 90px rgba(0,0,0,.38),
-    0 0 0 1px var(--p-accent-soft),
-    0 0 55px var(--p-accent-soft);
+  border-radius: 14px;
+  background: #0d0d10;
 }
 
-.browserBar {
-  height: 48px;
-  display: grid;
-  grid-template-columns: 75px 1fr 34px;
-  gap: 10px;
-  align-items: center;
-  padding: 0 13px;
-  border-bottom: 1px solid var(--p-line);
-  background: #111114;
-}
-
-.browserDots {
-  display: flex;
-  gap: 6px;
-}
-
-.browserDots i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #403a3d;
-}
-
-.browserDots i:first-child {
-  background: #71303c;
-}
-
-.browserDots i:nth-child(2) {
-  background: #655a37;
-}
-
-.browserDots i:last-child {
-  background: #315744;
-}
-
-.browserAddress {
-  min-width: 0;
-  height: 27px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 0 10px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.055);
-  border-radius: 7px;
-  background: #0c0c0e;
-  color: #5f595c;
-  font: 8px ui-monospace, SFMono-Regular, Menlo, monospace;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.browserAddress span {
+.briefLabel {
   color: var(--p-accent-bright);
-  font-size: 5px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .15em;
 }
 
-.browserBar > a {
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  border-radius: 7px;
-  color: #686165;
-  text-decoration: none;
-}
-
-.browserBar > a:hover {
+.projectBrief > strong {
+  margin-top: 18px;
   color: var(--p-text);
-  background: rgba(255,255,255,.035);
+  font-size: clamp(38px, 5vw, 70px);
+  letter-spacing: -.055em;
+  line-height: .95;
 }
 
-.previewViewport {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at center, var(--p-accent-soft), transparent 40%),
-    #070708;
+.projectBrief p {
+  max-width: 620px;
+  margin: 22px 0 0;
+  color: var(--p-muted);
+  font-size: 14px;
+  line-height: 1.7;
 }
 
-.previewViewport iframe {
-  width: 100%;
-  height: 100%;
-  display: block;
-  border: 0;
-  pointer-events: none;
-  background: #070708;
-}
-
-.previewOverlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: end;
-  justify-content: end;
-  padding: 13px;
+.projectBrief a {
+  width: max-content;
+  margin-top: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--p-accent-bright);
+  color: var(--p-text);
   text-decoration: none;
-  background: linear-gradient(180deg, transparent 70%, rgba(0,0,0,.42));
+  font-size: 11px;
+  font-weight: 700;
 }
 
-.previewOverlay span {
-  padding: 6px 9px;
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 999px;
-  color: rgba(255,255,255,.72);
-  background: rgba(9,9,11,.7);
-  backdrop-filter: blur(10px);
-  font-size: 7px;
-  font-weight: 700;
-  letter-spacing: .12em;
+.projectBrief a svg {
+  width: 15px;
+  height: 15px;
 }
 
 .previewMeta {
@@ -559,21 +450,6 @@ a {
   color: #989194;
   font-size: 8px;
   font-weight: 600;
-}
-
-.onlineStatus {
-  display: flex !important;
-  align-items: center;
-  gap: 6px;
-  color: var(--p-accent-bright) !important;
-}
-
-.onlineStatus i {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--p-accent-bright);
-  box-shadow: 0 0 10px var(--p-accent-bright);
 }
 
 .showcaseBottom {
@@ -742,27 +618,8 @@ a {
     font-size: 10px;
   }
 
-  .previewFrame {
-    border-radius: 12px;
-  }
-
-  .browserBar {
-    height: 42px;
-    grid-template-columns: 55px 1fr 28px;
-    padding: 0 9px;
-  }
-
-  .browserDots {
-    gap: 4px;
-  }
-
-  .browserDots i {
-    width: 6px;
-    height: 6px;
-  }
-
-  .browserAddress {
-    font-size: 6px;
+  .projectBrief {
+    min-height: 340px;
   }
 
   .previewMeta {
@@ -810,13 +667,7 @@ a {
     padding: 0 12px;
   }
 
-  .previewViewport {
-    aspect-ratio: 1.15 / 1;
-  }
-
-  .previewOverlay span {
-    font-size: 6px;
-  }
+  .projectBrief { min-height: 300px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

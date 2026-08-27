@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_REQUEST_BYTES = 12_000;
 
 function normalizeText(value: unknown, maxLength: number) {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
@@ -8,14 +9,31 @@ function normalizeText(value: unknown, maxLength: number) {
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    if (request.headers.get("sec-fetch-site") === "cross-site") {
+      return NextResponse.json({ error: "Cross-site request rejected" }, { status: 403 });
+    }
+
+    if (!request.headers.get("content-type")?.toLowerCase().startsWith("application/json")) {
+      return NextResponse.json({ error: "Expected JSON" }, { status: 415 });
+    }
+
+    const contentLength = Number(request.headers.get("content-length") ?? 0);
+    if (contentLength > MAX_REQUEST_BYTES) {
+      return NextResponse.json({ error: "Request is too large" }, { status: 413 });
+    }
+
+    const parsed: unknown = await request.json();
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return NextResponse.json({ error: "Invalid form data" }, { status: 400 });
+    }
+
+    const body = parsed as Record<string, unknown>;
 
     const name = normalizeText(body.name, 80).replace(/[\r\n]+/g, " ");
     const email = normalizeText(body.email, 254);
     const message = normalizeText(body.message, 4000);
     const website = normalizeText(body.website, 200);
 
-    // Campo invisível para visitantes reais. Se vier preenchido, tratamos como bot.
     if (website) {
       return NextResponse.json({ ok: true });
     }
@@ -35,6 +53,8 @@ export async function POST(request: Request) {
 
     const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
+      cache: "no-store",
+      signal: AbortSignal.timeout(10_000),
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
@@ -57,8 +77,7 @@ export async function POST(request: Request) {
     });
 
     if (!resendResponse.ok) {
-      const details = await resendResponse.text();
-      console.error("Resend contact error:", resendResponse.status, details.slice(0, 500));
+      console.error("Resend contact error:", resendResponse.status);
       return NextResponse.json({ error: "Email provider rejected the request" }, { status: 502 });
     }
 

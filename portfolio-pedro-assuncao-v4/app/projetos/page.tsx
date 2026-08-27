@@ -19,41 +19,41 @@ type Project = {
 const projects: Project[] = [
   {
     number: "01",
-    eyebrow: "INTERFACE WEB / LANDING PAGE",
+    eyebrow: "LANDING PAGE / SERVIÇOS",
     title: "Prótese Capilar",
     shortTitle: "Prótese",
     description:
-      "Landing page premium desenvolvida para apresentar um serviço de prótese capilar com foco em conversão, clareza e experiência visual.",
+      "Landing page demonstrativa para apresentar um serviço de prótese capilar com navegação direta, conteúdo objetivo e contato configurável.",
     detail:
-      "O projeto combina hero em destaque, seções comerciais, resultados, FAQ e CTAs para WhatsApp em uma experiência responsiva e elegante.",
-    stack: ["React", "TypeScript", "CSS", "Responsive UI"],
+      "A implementação reúne apresentação do serviço, etapas de atendimento, imagens identificadas como demonstrativas, FAQ acessível e adaptação para telas menores.",
+    stack: ["Next.js", "TypeScript", "CSS", "Acessibilidade"],
     live: "https://projeto-protese-capilar-alpha.vercel.app/",
     github: "https://github.com/pedroassunncao/projeto-protese-capilar",
     theme: "gold",
   },
   {
     number: "02",
-    eyebrow: "NEXT.JS / SAAS DASHBOARD",
+    eyebrow: "INTERFACE SAAS / DASHBOARD",
     title: "Nexus Dashboard",
     shortTitle: "Nexus",
     description:
-      "Dashboard SaaS moderno com visão de métricas, projetos, analytics e segurança em uma interface densa, organizada e responsiva.",
+      "Interface SaaS demonstrativa para acompanhar projetos, métricas, eventos e controles de segurança em diferentes tamanhos de tela.",
     detail:
-      "A aplicação explora navegação entre áreas, gráficos, pesquisa, notificações, score de segurança e estados interativos sem depender de uma biblioteca visual externa.",
-    stack: ["Next.js", "TypeScript", "UX", "SVG"],
+      "A aplicação inclui navegação entre áreas, pesquisa, gráficos acessíveis e uma análise de segurança claramente simulada, sem biblioteca de componentes externa.",
+    stack: ["Next.js", "TypeScript", "CSS", "Visualização de dados"],
     live: "https://projeto-02-nexus-dashboard.vercel.app/",
     github: "https://github.com/pedroassunncao/projeto-02-nexus-dashboard",
     theme: "wine",
   },
   {
     number: "03",
-    eyebrow: "CYBERSECURITY / DEFENSIVE LAB",
+    eyebrow: "APPSEC / LABORATÓRIO DEFENSIVO",
     title: "Sentinel Web Security Lab",
     shortTitle: "Sentinel",
     description:
-      "Laboratório visual de segurança web voltado a postura defensiva, headers HTTP, OWASP, findings e organização de análises.",
+      "Laboratório demonstrativo para organizar headers HTTP, categorias OWASP, achados e recomendações de segurança web.",
     detail:
-      "O Sentinel transforma conceitos de application security em uma interface navegável com security score, checklist OWASP, recomendações defensivas e histórico de scans demonstrativos.",
+      "O Sentinel apresenta um conjunto fixo de dados educacionais. Ele não envia requisições ao alvo, não testa vulnerabilidades e não executa exploração.",
     stack: ["OWASP", "Web Security", "Next.js", "TypeScript"],
     live: "https://projeto-03-web-security-lab.vercel.app/",
     github: "https://github.com/pedroassunncao/projeto-03-web-security-lab",
@@ -158,10 +158,6 @@ export default function ProjectsPage() {
 
   return (
     <main className={`projectsPage theme-${project.theme}`}>
-      <div className="projectNoise" aria-hidden="true" />
-      <div className="projectGlow projectGlowOne" aria-hidden="true" />
-      <div className="projectGlow projectGlowTwo" aria-hidden="true" />
-
       <header className="projectsHeader">
         <a className="projectsBrand" href="/" aria-label="Voltar para o início">
           PA<span>.</span>
@@ -185,7 +181,7 @@ export default function ProjectsPage() {
       >
         <div className="showcaseTop">
           <div className="showcaseLabel">
-            <span>PROJETOS SELECIONADOS</span>
+            <span>PROJETOS</span>
             <i />
             <strong>{project.number} / 03</strong>
           </div>
@@ -250,57 +246,23 @@ export default function ProjectsPage() {
           </div>
 
           <div className="previewColumn">
-            <div className="previewFrame">
-              <div className="browserBar">
-                <div className="browserDots" aria-hidden="true">
-                  <i />
-                  <i />
-                  <i />
-                </div>
-
-                <div className="browserAddress">
-                  <span>●</span>
-                  {project.live.replace("https://", "").replace(/\/$/, "")}
-                </div>
-
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Abrir ${project.title}`}
-                >
-                  <ArrowUpRight />
-                </a>
-              </div>
-
-              <div className="previewViewport">
-                <iframe
-                  key={project.live}
-                  title={`Preview ao vivo — ${project.title}`}
-                  src={project.live}
-                  loading="lazy"
-                  tabIndex={-1}
-                />
-                <a
-                  className="previewOverlay"
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Abrir ${project.title} em nova guia`}
-                >
-                  <span>LIVE PREVIEW</span>
-                </a>
-              </div>
-            </div>
+            <article className="projectBrief">
+              <span className="briefLabel">RESUMO DO PROJETO</span>
+              <strong>{project.shortTitle}</strong>
+              <p>{project.detail}</p>
+              <a href={project.live} target="_blank" rel="noopener noreferrer">
+                Abrir demonstração <ArrowUpRight />
+              </a>
+            </article>
 
             <div className="previewMeta">
               <div>
-                <span>CASE</span>
+                <span>PROJETO</span>
                 <strong>{project.number}</strong>
               </div>
               <div>
-                <span>STATUS</span>
-                <strong className="onlineStatus"><i /> ONLINE</strong>
+                <span>TIPO</span>
+                <strong>DEMONSTRAÇÃO</strong>
               </div>
               <div>
                 <span>FOCO</span>
@@ -343,7 +305,7 @@ export default function ProjectsPage() {
 
       <footer className="projectsFooter">
         <span>© 2026 Pedro Assunção</span>
-        <p>Frontend · Web · Cybersecurity</p>
+        <p>Frontend e segurança web</p>
         <span>Use ← → para navegar</span>
       </footer>
     </main>

@@ -45,8 +45,10 @@ const technologies = [
   "TypeScript",
   "React",
   "Next.js",
-  "HTML & CSS",
+  "HTML",
+  "CSS",
   "Git",
+  "Acessibilidade",
   "Web Security",
   "OWASP",
   "Linux",
@@ -55,175 +57,173 @@ const technologies = [
 const projectMeta = [
   {
     number: "01",
-    stack: ["React", "TypeScript", "CSS"],
-   href: "/projetos?projeto=1"  
+    stack: ["Next.js", "TypeScript", "CSS responsivo"],
+    href: "/projetos?projeto=1",
   },
-
   {
     number: "02",
-    stack: ["Next.js", "TypeScript", "UX"],
-    href: "/projetos?projeto=2"
+    stack: ["Next.js", "TypeScript", "Visualização de dados"],
+    href: "/projetos?projeto=2",
   },
-  
   {
     number: "03",
-    stack: ["OWASP", "Linux", "Web Security"],
-    href: "/projetos?projeto=3"
+    stack: ["Next.js", "OWASP", "Security Headers"],
+    href: "/projetos?projeto=3",
   },
 ];
 
 const translations: Record<Language, Copy> = {
   pt: {
-    nav: { about: "Sobre", projects: "Projetos", stack: "Stack", contact: "Contato", cta: "Vamos conversar" },
-    eyebrow: "PEDRO ASSUNÇÃO / PORTFÓLIO",
-    heroLine1: "Frontend que performa.",
-    heroLine2: "Segurança que sustenta.",
+    nav: { about: "Sobre", projects: "Projetos", stack: "Tecnologias", contact: "Contato", cta: "Fale comigo" },
+    eyebrow: "FRONTEND E SEGURANÇA WEB",
+    heroLine1: "Interfaces claras.",
+    heroLine2: "Código responsável.",
     heroText:
-      "Sou Pedro Assunção, desenvolvedor frontend com atuação em cibersegurança. Crio interfaces modernas, rápidas e responsivas sem deixar segurança e boas práticas em segundo plano.",
-    heroProjects: "Ver projetos",
-    heroAbout: "Conheça meu trabalho",
+      "Sou Pedro Assunção. Desenvolvo produtos web responsivos e acessíveis, com atenção à performance e aos riscos que aparecem entre a interface e a aplicação.",
+    heroProjects: "Conhecer projetos",
+    heroAbout: "Como eu trabalho",
     scroll: "SCROLL",
-    aboutLabel: "01 / SOBRE",
-    aboutTitle: "Interface bonita é só o começo.",
-    aboutAccent: "Ela também precisa ser sólida.",
+    aboutLabel: "SOBRE",
+    aboutTitle: "Uma boa interface resolve o problema",
+    aboutAccent: "sem criar outro.",
     aboutP1:
-      "Meu foco principal é desenvolvimento frontend: transformar ideias em interfaces rápidas, organizadas, responsivas e agradáveis de usar.",
+      "Meu trabalho começa pela estrutura: conteúdo compreensível, navegação previsível e componentes que funcionam bem em diferentes telas.",
     aboutP2:
-      "Paralelamente, atuo e estudo cibersegurança, com interesse especial em segurança de aplicações web. Essa combinação me faz olhar para um projeto não só pela experiência visual, mas também pela qualidade e segurança daquilo que está sendo entregue.",
-    stats: ["Interfaces e experiência", "Frontend moderno", "Segurança aplicada"],
-    projectsLabel: "02 / PROJETOS",
-    projectsTitle: "Projetos & experimentos",
+      "O estudo de segurança de aplicações complementa essa prática. Validação de dados, dependências, headers e exposição de informações fazem parte da revisão, não de uma etapa tardia.",
+    stats: ["Hierarquia e texto direto", "Código legível e sustentável", "Controles proporcionais ao risco"],
+    projectsLabel: "PROJETOS",
+    projectsTitle: "Trabalhos selecionados",
     projects: [
       {
-        title: "Interface Web",
-        description: "Projeto frontend com foco em responsividade, performance, acessibilidade e uma experiência visual limpa.",
+        title: "Pamela Dantas — Prótese Capilar",
+        description: "Landing page comercial com navegação objetiva, conteúdo de serviço, FAQ e contato configurável.",
       },
       {
-        title: "Aplicação Next.js",
-        description: "Aplicação moderna construída com componentes reutilizáveis, boas práticas de desenvolvimento e atenção à experiência do usuário.",
+        title: "Nexus Dashboard",
+        description: "Interface SaaS responsiva com projetos, métricas, pesquisa e estados interativos baseados em dados demonstrativos.",
       },
       {
-        title: "Web Security Lab",
-        description: "Ambiente de estudos e testes voltado à segurança de aplicações web, análise de vulnerabilidades e práticas de desenvolvimento seguro.",
+        title: "Sentinel — Web Security Lab",
+        description: "Laboratório defensivo que organiza headers, categorias OWASP, achados e recomendações sem executar varreduras reais.",
       },
     ],
-    stackLabel: "03 / STACK",
-    stackTitle: "Frontend, web e segurança no mesmo fluxo.",
-    contactLabel: "04 / CONTATO",
-    contactIntro: "Tem um projeto em mente? Envie uma mensagem e responderei em breve.",
-    contactTitle1: "Vamos",
-    contactTitle2: "conversar.",
+    stackLabel: "TECNOLOGIAS",
+    stackTitle: "Ferramentas escolhidas pelo problema, não pela tendência.",
+    contactLabel: "CONTATO",
+    contactIntro: "Conte brevemente o que você precisa. Eu respondo pelo e-mail informado no formulário.",
+    contactTitle1: "Vamos falar sobre",
+    contactTitle2: "o seu projeto.",
     contactName: "Nome",
     contactEmail: "E-mail",
     contactMessage: "Mensagem",
     contactSubmit: "Enviar mensagem",
     contactSending: "Enviando...",
-    contactSuccess: "Mensagem enviada. Obrigado pelo contato!",
+    contactSuccess: "Mensagem enviada. Obrigado pelo contato.",
     contactError: "Não foi possível enviar agora. Tente novamente em instantes.",
-    contactPrivacy: "Seu e-mail é usado somente para que eu possa responder seu contato.",
-    backTop: "Voltar ao topo ↑",
+    contactPrivacy: "Seu e-mail será usado apenas para responder à mensagem.",
+    backTop: "Voltar ao início",
     languageLabel: "Selecionar idioma",
   },
   en: {
-    nav: { about: "About", projects: "Projects", stack: "Stack", contact: "Contact", cta: "Let's talk" },
-    eyebrow: "PEDRO ASSUNÇÃO / PORTFOLIO",
-    heroLine1: "Frontend that performs.",
-    heroLine2: "Security that holds.",
+    nav: { about: "About", projects: "Projects", stack: "Technologies", contact: "Contact", cta: "Contact me" },
+    eyebrow: "FRONTEND AND WEB SECURITY",
+    heroLine1: "Clear interfaces.",
+    heroLine2: "Responsible code.",
     heroText:
-      "I'm Pedro Assunção, a frontend developer also working in cybersecurity. I build modern, fast and responsive interfaces without putting security and good practices aside.",
-    heroProjects: "View projects",
-    heroAbout: "Discover my work",
+      "I'm Pedro Assunção. I build responsive, accessible web products with close attention to performance and to the risks between the interface and the application.",
+    heroProjects: "Explore projects",
+    heroAbout: "How I work",
     scroll: "SCROLL",
-    aboutLabel: "01 / ABOUT",
-    aboutTitle: "A beautiful interface is just the beginning.",
-    aboutAccent: "It also needs to be solid.",
+    aboutLabel: "ABOUT",
+    aboutTitle: "A good interface solves the problem",
+    aboutAccent: "without creating another one.",
     aboutP1:
-      "My main focus is frontend development: turning ideas into fast, organized, responsive interfaces that feel great to use.",
+      "My work starts with structure: understandable content, predictable navigation, and components that behave well across screen sizes.",
     aboutP2:
-      "Alongside development, I work with and study cybersecurity, with a special interest in web application security. That combination makes me look at a project not only through its visual experience, but also through the quality and security of what is being delivered.",
-    stats: ["Interfaces & experience", "Modern frontend", "Applied security"],
-    projectsLabel: "02 / PROJECTS",
-    projectsTitle: "Projects & experiments",
+      "Application security complements that practice. Input validation, dependencies, headers, and information exposure are part of the review rather than a late-stage concern.",
+    stats: ["Hierarchy and direct writing", "Readable, maintainable code", "Controls proportional to risk"],
+    projectsLabel: "PROJECTS",
+    projectsTitle: "Selected work",
     projects: [
       {
-        title: "Web Interface",
-        description: "Frontend project focused on responsiveness, performance, accessibility and a clean visual experience.",
+        title: "Pamela Dantas — Hair Replacement",
+        description: "A commercial landing page with direct navigation, service content, FAQ, and configurable contact links.",
       },
       {
-        title: "Next.js Application",
-        description: "Modern application built with reusable components, development best practices and close attention to user experience.",
+        title: "Nexus Dashboard",
+        description: "A responsive SaaS interface with projects, metrics, search, and interactive states based on demonstration data.",
       },
       {
-        title: "Web Security Lab",
-        description: "Study and testing environment focused on web application security, vulnerability analysis and secure development practices.",
+        title: "Sentinel — Web Security Lab",
+        description: "A defensive lab for headers, OWASP categories, findings, and recommendations that runs no real scans.",
       },
     ],
-    stackLabel: "03 / STACK",
-    stackTitle: "Frontend, web and security in the same workflow.",
-    contactLabel: "04 / CONTACT",
-    contactIntro: "Have a project in mind? Send me a message and I'll get back to you soon.",
-    contactTitle1: "Let's",
-    contactTitle2: "talk.",
+    stackLabel: "TECHNOLOGIES",
+    stackTitle: "Tools chosen for the problem, not the trend.",
+    contactLabel: "CONTACT",
+    contactIntro: "Briefly describe what you need. I will reply to the email address entered in the form.",
+    contactTitle1: "Let's discuss",
+    contactTitle2: "your project.",
     contactName: "Name",
     contactEmail: "Email",
     contactMessage: "Message",
     contactSubmit: "Send message",
     contactSending: "Sending...",
-    contactSuccess: "Message sent. Thanks for reaching out!",
+    contactSuccess: "Message sent. Thank you for getting in touch.",
     contactError: "I couldn't send your message right now. Please try again shortly.",
-    contactPrivacy: "Your email is used only so I can reply to your message.",
-    backTop: "Back to top ↑",
+    contactPrivacy: "Your email will only be used to reply to your message.",
+    backTop: "Back to start",
     languageLabel: "Select language",
   },
   es: {
-    nav: { about: "Sobre mí", projects: "Proyectos", stack: "Stack", contact: "Contacto", cta: "Hablemos" },
-    eyebrow: "PEDRO ASSUNÇÃO / PORTAFOLIO",
-    heroLine1: "Frontend que rinde.",
-    heroLine2: "Seguridad que sostiene.",
+    nav: { about: "Sobre mí", projects: "Proyectos", stack: "Tecnologías", contact: "Contacto", cta: "Contáctame" },
+    eyebrow: "FRONTEND Y SEGURIDAD WEB",
+    heroLine1: "Interfaces claras.",
+    heroLine2: "Código responsable.",
     heroText:
-      "Soy Pedro Assunção, desarrollador frontend con actuación en ciberseguridad. Creo interfaces modernas, rápidas y responsivas sin dejar de lado la seguridad y las buenas prácticas.",
+      "Soy Pedro Assunção. Desarrollo productos web responsivos y accesibles, con atención al rendimiento y a los riesgos entre la interfaz y la aplicación.",
     heroProjects: "Ver proyectos",
-    heroAbout: "Conoce mi trabajo",
+    heroAbout: "Cómo trabajo",
     scroll: "SCROLL",
-    aboutLabel: "01 / SOBRE MÍ",
-    aboutTitle: "Una interfaz bonita es solo el comienzo.",
-    aboutAccent: "También necesita ser sólida.",
+    aboutLabel: "SOBRE MÍ",
+    aboutTitle: "Una buena interfaz resuelve el problema",
+    aboutAccent: "sin crear otro.",
     aboutP1:
-      "Mi enfoque principal es el desarrollo frontend: transformar ideas en interfaces rápidas, organizadas, responsivas y agradables de usar.",
+      "Mi trabajo empieza por la estructura: contenido comprensible, navegación previsible y componentes que funcionan bien en distintos tamaños de pantalla.",
     aboutP2:
-      "En paralelo, trabajo y estudio ciberseguridad, con especial interés en la seguridad de aplicaciones web. Esta combinación me permite analizar un proyecto no solo por su experiencia visual, sino también por la calidad y seguridad de lo que se entrega.",
-    stats: ["Interfaces y experiencia", "Frontend moderno", "Seguridad aplicada"],
-    projectsLabel: "02 / PROYECTOS",
-    projectsTitle: "Proyectos & experimentos",
+      "La seguridad de aplicaciones complementa esa práctica. La validación de datos, las dependencias, los headers y la exposición de información forman parte de la revisión desde el inicio.",
+    stats: ["Jerarquía y texto directo", "Código legible y mantenible", "Controles proporcionales al riesgo"],
+    projectsLabel: "PROYECTOS",
+    projectsTitle: "Trabajos seleccionados",
     projects: [
       {
-        title: "Interfaz Web",
-        description: "Proyecto frontend centrado en responsividad, rendimiento, accesibilidad y una experiencia visual limpia.",
+        title: "Pamela Dantas — Prótesis Capilar",
+        description: "Landing page comercial con navegación directa, contenido de servicio, preguntas frecuentes y contacto configurable.",
       },
       {
-        title: "Aplicación Next.js",
-        description: "Aplicación moderna construida con componentes reutilizables, buenas prácticas de desarrollo y atención a la experiencia del usuario.",
+        title: "Nexus Dashboard",
+        description: "Interfaz SaaS responsiva con proyectos, métricas, búsqueda y estados interactivos basados en datos demostrativos.",
       },
       {
-        title: "Web Security Lab",
-        description: "Entorno de estudio y pruebas enfocado en seguridad de aplicaciones web, análisis de vulnerabilidades y prácticas de desarrollo seguro.",
+        title: "Sentinel — Web Security Lab",
+        description: "Laboratorio defensivo de headers, categorías OWASP, hallazgos y recomendaciones que no ejecuta análisis reales.",
       },
     ],
-    stackLabel: "03 / STACK",
-    stackTitle: "Frontend, web y seguridad en el mismo flujo.",
-    contactLabel: "04 / CONTACTO",
-    contactIntro: "¿Tienes un proyecto en mente? Envíame un mensaje y te responderé pronto.",
-    contactTitle1: "Hablemos",
-    contactTitle2: "de tu idea.",
+    stackLabel: "TECNOLOGÍAS",
+    stackTitle: "Herramientas elegidas por el problema, no por la tendencia.",
+    contactLabel: "CONTACTO",
+    contactIntro: "Cuéntame brevemente qué necesitas. Responderé al correo indicado en el formulario.",
+    contactTitle1: "Hablemos de",
+    contactTitle2: "tu proyecto.",
     contactName: "Nombre",
     contactEmail: "Correo electrónico",
     contactMessage: "Mensaje",
     contactSubmit: "Enviar mensaje",
     contactSending: "Enviando...",
-    contactSuccess: "Mensaje enviado. ¡Gracias por contactarme!",
+    contactSuccess: "Mensaje enviado. Gracias por contactarme.",
     contactError: "No pude enviar tu mensaje ahora. Inténtalo de nuevo en unos instantes.",
-    contactPrivacy: "Tu correo se usa únicamente para que pueda responder a tu mensaje.",
-    backTop: "Volver arriba ↑",
+    contactPrivacy: "Tu correo solo se usará para responder al mensaje.",
+    backTop: "Volver al inicio",
     languageLabel: "Seleccionar idioma",
   },
 };
@@ -293,8 +293,8 @@ export default function Home() {
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   useEffect(() => {
-    const saved = window.localStorage.getItem("portfolio-language") as Language | null;
-    if (saved && translations[saved]) setLanguage(saved);
+    const saved = window.localStorage.getItem("portfolio-language");
+    if (saved === "pt" || saved === "en" || saved === "es") setLanguage(saved);
   }, []);
 
   useEffect(() => {
@@ -304,7 +304,7 @@ export default function Home() {
   }, [language]);
 
   useEffect(() => {
-    function closeOnOutsideClick(event: MouseEvent) {
+    function closeOnOutsideClick(event: PointerEvent) {
       if (languageRef.current && !languageRef.current.contains(event.target as Node)) {
         setLanguageOpen(false);
       }
@@ -312,10 +312,10 @@ export default function Home() {
     function closeOnEscape(event: KeyboardEvent) {
       if (event.key === "Escape") setLanguageOpen(false);
     }
-    document.addEventListener("mousedown", closeOnOutsideClick);
+    document.addEventListener("pointerdown", closeOnOutsideClick);
     document.addEventListener("keydown", closeOnEscape);
     return () => {
-      document.removeEventListener("mousedown", closeOnOutsideClick);
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
       document.removeEventListener("keydown", closeOnEscape);
     };
   }, []);
@@ -355,10 +355,6 @@ export default function Home() {
 
   return (
     <main>
-      <div className="noise" aria-hidden="true" />
-      <div className="orb orbOne" aria-hidden="true" />
-      <div className="orb orbTwo" aria-hidden="true" />
-
       <header className="siteHeader">
         <a className="brand" href="#inicio" aria-label="Ir para o início">
           PA<span>.</span>
@@ -377,26 +373,29 @@ export default function Home() {
               className="languageButton"
               type="button"
               aria-label={copy.languageLabel}
-              aria-haspopup="menu"
               aria-expanded={languageOpen}
+              aria-controls="language-options"
               onClick={() => setLanguageOpen((open) => !open)}
             >
               <GlobeIcon />
-              <span className="languageCountry">{currentLanguage.country}</span>
               <span className="languageCode">{currentLanguage.code}</span>
               <ChevronDown />
             </button>
 
-            <div className={`languageMenu ${languageOpen ? "isOpen" : ""}`} role="menu">
+            <div
+              className={`languageMenu ${languageOpen ? "isOpen" : ""}`}
+              id="language-options"
+              aria-label={copy.languageLabel}
+              hidden={!languageOpen}
+            >
               {languages.map((item) => (
                 <button
                   type="button"
-                  role="menuitem"
+                  aria-pressed={language === item.id}
                   className={`languageOption ${language === item.id ? "isActive" : ""}`}
                   onClick={() => changeLanguage(item.id)}
                   key={item.id}
                 >
-                  <span className="optionCountry">{item.country}</span>
                   <span className="optionCode">{item.code}</span>
                   <span className="optionName">{item.name}</span>
                   <span className="activeDot" aria-hidden="true" />
@@ -429,21 +428,11 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="scrollHint" aria-hidden="true">
-          <span />
-          {copy.scroll}
-        </div>
       </section>
 
-      <section className="marquee" aria-label="Tecnologias">
-        <div className="marqueeTrack">
-          {[...technologies, ...technologies].map((tech, index) => (
-            <span key={`${tech}-${index}`}>
-              {tech}<b>✦</b>
-            </span>
-          ))}
-        </div>
-      </section>
+      <div className="stackStrip" aria-label="Tecnologias principais">
+        {technologies.slice(0, 6).map((tech) => <span key={tech}>{tech}</span>)}
+      </div>
 
       <section className="section about" id="sobre">
         <div className="sectionLabel">{copy.aboutLabel}</div>
@@ -456,7 +445,7 @@ export default function Home() {
             <p>{copy.aboutP2}</p>
             <div className="stats">
               <div><strong>UI</strong><span>{copy.stats[0]}</span></div>
-              <div><strong>WEB</strong><span>{copy.stats[1]}</span></div>
+              <div><strong>CODE</strong><span>{copy.stats[1]}</span></div>
               <div><strong>SEC</strong><span>{copy.stats[2]}</span></div>
             </div>
           </div>
@@ -471,7 +460,7 @@ export default function Home() {
 
         <div className="projectList">
           {projectMeta.map((project, index) => (
-            <a className="projectCard" href={project.href}  key={project.number}>
+            <a className="projectCard" href={project.href} key={project.number}>
               <div className="projectNumber">{project.number}</div>
               <div className="projectContent">
                 <h3>{copy.projects[index].title}</h3>
@@ -504,35 +493,32 @@ export default function Home() {
             <p>{copy.contactIntro}</p>
           </div>
 
-          <form className="contactForm" onSubmit={handleContactSubmit}>
-            <label className="srOnly" htmlFor="contact-name">{copy.contactName}</label>
+          <form className="contactForm" onSubmit={handleContactSubmit} aria-busy={formStatus === "sending"}>
+            <label htmlFor="contact-name">{copy.contactName}</label>
             <input
               id="contact-name"
               name="name"
               type="text"
-              placeholder={copy.contactName}
               autoComplete="name"
               minLength={2}
               maxLength={80}
               required
             />
 
-            <label className="srOnly" htmlFor="contact-email">{copy.contactEmail}</label>
+            <label htmlFor="contact-email">{copy.contactEmail}</label>
             <input
               id="contact-email"
               name="email"
               type="email"
-              placeholder={copy.contactEmail}
               autoComplete="email"
               maxLength={254}
               required
             />
 
-            <label className="srOnly" htmlFor="contact-message">{copy.contactMessage}</label>
+            <label htmlFor="contact-message">{copy.contactMessage}</label>
             <textarea
               id="contact-message"
               name="message"
-              placeholder={copy.contactMessage}
               minLength={10}
               maxLength={4000}
               rows={7}
@@ -566,25 +552,14 @@ export default function Home() {
       <footer className="footer">
         <span>© 2026 Pedro Assunção</span>
         <div className="socials">
-         <a
-  href="https://github.com/pedroassunncao"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="GitHub"
->
-  <GithubIcon />
-</a>
-
-<a
-  href="https://www.linkedin.com/in/pedroassunncao/"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="LinkedIn"
->
-  <LinkedinIcon />
-</a>
+          <a href="https://github.com/pedroassunncao" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <GithubIcon />
+          </a>
+          <a href="https://www.linkedin.com/in/pedroassunncao/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <LinkedinIcon />
+          </a>
         </div>
-        <a href="#inicio">{copy.backTop}</a>
+        <a href="#inicio">{copy.backTop} ↑</a>
       </footer>
     </main>
   );

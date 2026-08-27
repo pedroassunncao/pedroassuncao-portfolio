@@ -1,92 +1,81 @@
 # Portfólio — Pedro Assunção
 
-Portfólio pessoal em Next.js, com foco em desenvolvimento frontend e cibersegurança.
+Portfólio pessoal de frontend e segurança web. O projeto apresenta trabalhos selecionados, tecnologias e um formulário de contato sem expor o endereço de destino no navegador.
 
-## 1. Instale no Windows
+## Principais recursos
 
-- Node.js LTS
-- Visual Studio Code
-- Git for Windows
+- conteúdo em português, inglês e espanhol, com preferência salva no navegador;
+- página de projetos com links para as demonstrações e para o código-fonte;
+- layout responsivo, navegação por teclado e suporte a redução de movimento;
+- formulário validado no cliente e no servidor;
+- envio de e-mail pela API do Resend, executado somente no servidor;
+- metadados para buscadores e compartilhamento social;
+- headers HTTP básicos de segurança configurados no Next.js.
 
-## 2. Abra o projeto
+## Tecnologias
 
-Extraia a pasta e abra no VS Code. Você também pode clicar com o botão direito na pasta e escolher **Abrir com Code**.
+- Next.js 16 e React 19;
+- TypeScript;
+- CSS;
+- API do Resend.
 
-## 3. Instale as dependências
+## Executar localmente
 
-No terminal do VS Code:
+Requer Node.js 20.9 ou mais recente.
 
-```bash
+~~~bash
 npm install
-```
-
-## 4. Rode o site
-
-```bash
 npm run dev
-```
+~~~
 
-Abra http://localhost:3000 no navegador.
+Acesse http://localhost:3000. No Windows, o arquivo INICIAR_SITE.bat executa a mesma rotina.
 
-Você também pode usar `INICIAR_SITE.bat` para instalar as dependências na primeira execução e iniciar o servidor automaticamente.
+## Variáveis de ambiente
 
-## 5. Formulário de contato sem expor seu e-mail
+Copie .env.example para .env.local e preencha:
 
-O formulário envia Nome + E-mail + Mensagem para uma rota interna do Next.js (`/api/contact`). Seu endereço particular fica em uma variável de ambiente do servidor e **não aparece no HTML nem no JavaScript enviado ao visitante**.
+| Variável | Uso |
+| --- | --- |
+| RESEND_API_KEY | chave privada usada pela rota de contato |
+| CONTACT_EMAIL | endereço que recebe as mensagens |
+| CONTACT_FROM | remetente autorizado no Resend |
+| NEXT_PUBLIC_SITE_URL | URL pública usada nos metadados; opcional na Vercel |
 
-A implementação usa a API do Resend diretamente no servidor, sem biblioteca extra.
+.env.local é ignorado pelo Git. Não publique chaves ou endereços privados no repositório.
 
-### Configuração local
+## Verificação
 
-> Nesta versão, o arquivo `.env.local` já foi criado com o endereço privado de recebimento informado por você. Ele está coberto pelo `.gitignore`; não remova essa proteção. Falta apenas adicionar sua `RESEND_API_KEY`.
+~~~bash
+npm run check
+npm run build
+~~~
 
-1. Crie uma conta no Resend e gere uma API Key.
-2. Duplique `.env.example` e renomeie a cópia para `.env.local`.
-3. Preencha:
+## Como o contato funciona
 
-```env
-RESEND_API_KEY=re_sua_chave
-CONTACT_EMAIL=seu-email-privado@exemplo.com
-CONTACT_FROM=Portfolio Pedro <onboarding@resend.dev>
-```
+O navegador envia nome, e-mail, mensagem e um campo antispam para /api/contact. A rota limita o tamanho da requisição, valida os campos e chama o Resend com as credenciais do servidor. O endereço em CONTACT_EMAIL nunca é enviado ao cliente.
 
-**Nunca envie `.env.local` para o GitHub.** O `.gitignore` deste projeto já bloqueia arquivos `.env`.
+Esse controle reduz abuso simples, mas não substitui rate limiting ou uma camada antispam dedicada em aplicações com maior volume.
 
-### Configuração na Vercel
+## Projetos apresentados
 
-No projeto da Vercel, vá em **Settings → Environment Variables** e crie estas variáveis:
+1. [Prótese Capilar](https://github.com/pedroassunncao/projeto-protese-capilar) — landing page demonstrativa para serviços.
+2. [Nexus Dashboard](https://github.com/pedroassunncao/projeto-02-nexus-dashboard) — interface SaaS com dados simulados.
+3. [Sentinel Web Security Lab](https://github.com/pedroassunncao/projeto-03-web-security-lab) — laboratório visual e defensivo.
 
-- `RESEND_API_KEY`
-- `CONTACT_EMAIL`
-- `CONTACT_FROM`
+## Estrutura
 
-Depois faça um novo deploy.
+~~~text
+app/
+  api/contact/route.ts   # validação e envio do formulário
+  projetos/              # apresentação dos projetos
+  globals.css            # estilos globais e responsividade
+  layout.tsx             # metadados e estrutura do documento
+  page.tsx               # página principal e traduções
+public/
+  og.png                 # imagem de compartilhamento
+next.config.ts           # configuração e headers HTTP
+~~~
 
-Enquanto estiver testando, você pode usar `onboarding@resend.dev` como remetente conforme as regras da sua conta do Resend. Quando seu domínio estiver configurado, prefira um remetente do próprio domínio, por exemplo:
+## Licença e uso
 
-```text
-Portfolio Pedro <contato@pedroassuncao.com.br>
-```
-
-O visitante nunca vê `CONTACT_EMAIL`. O e-mail informado por ele é configurado como `reply_to`, então você pode responder diretamente à mensagem recebida.
-
-## 6. Proteções do formulário
-
-- validação no navegador e novamente no servidor;
-- limite de tamanho dos campos;
-- campo honeypot invisível para reduzir spam automatizado;
-- a chave do serviço de e-mail fica apenas no servidor;
-- mensagem enviada em texto simples, sem renderizar HTML fornecido pelo visitante.
-
-## 7. O que editar
-
-- `app/page.tsx` — textos, idiomas, projetos, links e tecnologias.
-- `app/globals.css` — cores, tamanhos, animações, formulário e responsividade.
-- `app/api/contact/route.ts` — envio seguro das mensagens do formulário.
-- `app/layout.tsx` — título e descrição do navegador/buscadores.
-
-## 8. Dados que ainda faltam
-
-Pesquise dentro de `app/page.tsx` por `href="#"` e substitua pelos links reais dos seus projetos, GitHub e LinkedIn.
-
-Os três projetos atuais ainda são exemplos de conteúdo.
+Projeto de portfólio. O conteúdo pessoal e a identidade visual não são oferecidos como template ou material de marca para terceiros.
