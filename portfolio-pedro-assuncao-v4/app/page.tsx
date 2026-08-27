@@ -75,13 +75,13 @@ const projectMeta = [
 const translations: Record<Language, Copy> = {
   pt: {
     nav: { about: "Sobre", projects: "Projetos", stack: "Tecnologias", contact: "Contato", cta: "Fale comigo" },
-    eyebrow: "FRONTEND E SEGURANÇA WEB",
-    heroLine1: "Interfaces claras.",
-    heroLine2: "Código responsável.",
+    eyebrow: "PEDRO ASSUNÇÃO — FRONTEND E SEGURANÇA WEB",
+    heroLine1: "Eu faço a interface.",
+    heroLine2: "E cuido do código.",
     heroText:
-      "Sou Pedro Assunção. Desenvolvo produtos web responsivos e acessíveis, com atenção à performance e aos riscos que aparecem entre a interface e a aplicação.",
-    heroProjects: "Conhecer projetos",
-    heroAbout: "Como eu trabalho",
+      "Desenvolvo sites responsivos e acessíveis e reviso o que acontece por trás da tela: desempenho, estrutura e segurança.",
+    heroProjects: "Ver meus projetos",
+    heroAbout: "Sobre meu trabalho",
     scroll: "SCROLL",
     aboutLabel: "SOBRE",
     aboutTitle: "Uma boa interface resolve o problema",
@@ -126,13 +126,13 @@ const translations: Record<Language, Copy> = {
   },
   en: {
     nav: { about: "About", projects: "Projects", stack: "Technologies", contact: "Contact", cta: "Contact me" },
-    eyebrow: "FRONTEND AND WEB SECURITY",
-    heroLine1: "Clear interfaces.",
-    heroLine2: "Responsible code.",
+    eyebrow: "PEDRO ASSUNÇÃO — FRONTEND AND WEB SECURITY",
+    heroLine1: "I build the interface.",
+    heroLine2: "And care for the code.",
     heroText:
-      "I'm Pedro Assunção. I build responsive, accessible web products with close attention to performance and to the risks between the interface and the application.",
-    heroProjects: "Explore projects",
-    heroAbout: "How I work",
+      "I build responsive, accessible websites and review what happens behind the screen: performance, structure, and security.",
+    heroProjects: "View my projects",
+    heroAbout: "About my work",
     scroll: "SCROLL",
     aboutLabel: "ABOUT",
     aboutTitle: "A good interface solves the problem",
@@ -177,13 +177,13 @@ const translations: Record<Language, Copy> = {
   },
   es: {
     nav: { about: "Sobre mí", projects: "Proyectos", stack: "Tecnologías", contact: "Contacto", cta: "Contáctame" },
-    eyebrow: "FRONTEND Y SEGURIDAD WEB",
-    heroLine1: "Interfaces claras.",
-    heroLine2: "Código responsable.",
+    eyebrow: "PEDRO ASSUNÇÃO — FRONTEND Y SEGURIDAD WEB",
+    heroLine1: "Hago la interfaz.",
+    heroLine2: "Y cuido el código.",
     heroText:
-      "Soy Pedro Assunção. Desarrollo productos web responsivos y accesibles, con atención al rendimiento y a los riesgos entre la interfaz y la aplicación.",
-    heroProjects: "Ver proyectos",
-    heroAbout: "Cómo trabajo",
+      "Desarrollo sitios responsivos y accesibles y reviso lo que ocurre detrás de la pantalla: rendimiento, estructura y seguridad.",
+    heroProjects: "Ver mis proyectos",
+    heroAbout: "Sobre mi trabajo",
     scroll: "SCROLL",
     aboutLabel: "SOBRE MÍ",
     aboutTitle: "Una buena interfaz resuelve el problema",
@@ -355,6 +355,10 @@ export default function Home() {
 
   return (
     <main>
+      <div className="noise" aria-hidden="true" />
+      <div className="orb orbOne" aria-hidden="true" />
+      <div className="orb orbTwo" aria-hidden="true" />
+
       <header className="siteHeader">
         <a className="brand" href="#inicio" aria-label="Ir para o início">
           PA<span>.</span>
@@ -430,8 +434,14 @@ export default function Home() {
 
       </section>
 
-      <div className="stackStrip" aria-label="Tecnologias principais">
-        {technologies.slice(0, 6).map((tech) => <span key={tech}>{tech}</span>)}
+      <div className="marquee" aria-label={copy.stackLabel}>
+        <div className="marqueeTrack" aria-hidden="true">
+          {[...technologies, ...technologies].map((tech, index) => (
+            <span key={`${tech}-${index}`}>
+              {tech}<b>✦</b>
+            </span>
+          ))}
+        </div>
       </div>
 
       <section className="section about" id="sobre">
