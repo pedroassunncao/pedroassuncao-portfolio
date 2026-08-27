@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import "./projetos.css";
 
@@ -11,6 +12,7 @@ type Project = {
   description: string;
   detail: string;
   stack: string[];
+  preview: string;
   live: string;
   github: string;
   theme: "gold" | "wine" | "green";
@@ -27,6 +29,7 @@ const projects: Project[] = [
     detail:
       "A implementação reúne apresentação do serviço, etapas de atendimento, imagens identificadas como demonstrativas, FAQ acessível e adaptação para telas menores.",
     stack: ["Next.js", "TypeScript", "CSS", "Acessibilidade"],
+    preview: "/projects/protese-capilar.png",
     live: "https://projeto-protese-capilar-alpha.vercel.app/",
     github: "https://github.com/pedroassunncao/projeto-protese-capilar",
     theme: "gold",
@@ -41,6 +44,7 @@ const projects: Project[] = [
     detail:
       "A aplicação inclui navegação entre áreas, pesquisa, gráficos acessíveis e uma análise de segurança claramente simulada, sem biblioteca de componentes externa.",
     stack: ["Next.js", "TypeScript", "CSS", "Visualização de dados"],
+    preview: "/projects/nexus-dashboard.png",
     live: "https://projeto-02-nexus-dashboard.vercel.app/",
     github: "https://github.com/pedroassunncao/projeto-02-nexus-dashboard",
     theme: "wine",
@@ -55,6 +59,7 @@ const projects: Project[] = [
     detail:
       "O Sentinel apresenta um conjunto fixo de dados educacionais. Ele não envia requisições ao alvo, não testa vulnerabilidades e não executa exploração.",
     stack: ["OWASP", "Web Security", "Next.js", "TypeScript"],
+    preview: "/projects/sentinel.png",
     live: "https://projeto-03-web-security-lab.vercel.app/",
     github: "https://github.com/pedroassunncao/projeto-03-web-security-lab",
     theme: "green",
@@ -246,14 +251,48 @@ export default function ProjectsPage() {
           </div>
 
           <div className="previewColumn">
-            <article className="projectBrief">
-              <span className="briefLabel">RESUMO DO PROJETO</span>
-              <strong>{project.shortTitle}</strong>
-              <p>{project.detail}</p>
-              <a href={project.live} target="_blank" rel="noopener noreferrer">
-                Abrir demonstração <ArrowUpRight />
-              </a>
-            </article>
+            <div className="previewFrame">
+              <div className="browserBar">
+                <div className="browserDots" aria-hidden="true">
+                  <i />
+                  <i />
+                  <i />
+                </div>
+
+                <div className="browserAddress">
+                  <span>●</span>
+                  {project.live.replace("https://", "").replace(/\/$/, "")}
+                </div>
+
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Abrir ${project.title}`}
+                >
+                  <ArrowUpRight />
+                </a>
+              </div>
+
+              <div className="previewViewport">
+                <Image
+                  src={project.preview}
+                  alt={`Identidade visual do projeto ${project.title}`}
+                  fill
+                  priority={active === 0}
+                  sizes="(max-width: 980px) 92vw, 50vw"
+                />
+                <a
+                  className="previewOverlay"
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Abrir ${project.title} em nova guia`}
+                >
+                  <span>ABRIR PROJETO</span>
+                </a>
+              </div>
+            </div>
 
             <div className="previewMeta">
               <div>
