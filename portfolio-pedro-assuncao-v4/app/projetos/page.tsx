@@ -1,351 +1,136 @@
-"use client";
-
+import type { Metadata } from "next";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import "./projetos.css";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { projects } from "@/lib/site";
 
-type Project = {
-  number: string;
-  eyebrow: string;
-  title: string;
-  shortTitle: string;
-  description: string;
-  detail: string;
-  stack: string[];
-  preview: string;
-  live: string;
-  github: string;
-  theme: "gold" | "wine" | "green";
+export const metadata: Metadata = {
+  title: "Portfólio",
+  alternates: { canonical: "/projetos" },
+  description:
+    "Conheça os projetos de Pedro Assunção: landing pages e interfaces para apresentar serviços e organizar informações.",
+  openGraph: {
+    title: "Portfólio | Pedro Assunção",
+    description: "Conheça as ideias e escolhas por trás dos projetos.",
+    images: [
+      { url: "/projects/capilar-desktop.png", width: 1440, height: 1000 },
+    ],
+  },
+  twitter: {
+    title: "Portfólio | Pedro Assunção",
+    description: "Conheça os projetos de Pedro Assunção.",
+    images: ["/projects/capilar-desktop.png"],
+  },
 };
 
-const projects: Project[] = [
-  {
-    number: "01",
-    eyebrow: "LANDING PAGE / SERVIÇOS",
-    title: "Prótese Capilar",
-    shortTitle: "Prótese",
-    description:
-      "Landing page demonstrativa para apresentar um serviço de prótese capilar com navegação direta, conteúdo objetivo e contato configurável.",
-    detail:
-      "A implementação reúne apresentação do serviço, etapas de atendimento, imagens identificadas como demonstrativas, FAQ acessível e adaptação para telas menores.",
-    stack: ["Next.js", "TypeScript", "CSS", "Acessibilidade"],
-    preview: "/projects/protese-capilar.png",
-    live: "https://projeto-protese-capilar-alpha.vercel.app/",
-    github: "https://github.com/pedroassunncao/projeto-protese-capilar",
-    theme: "gold",
-  },
-  {
-    number: "02",
-    eyebrow: "INTERFACE SAAS / DASHBOARD",
-    title: "Nexus Dashboard",
-    shortTitle: "Nexus",
-    description:
-      "Interface SaaS demonstrativa para acompanhar projetos, métricas, eventos e controles de segurança em diferentes tamanhos de tela.",
-    detail:
-      "A aplicação inclui navegação entre áreas, pesquisa, gráficos acessíveis e uma análise de segurança claramente simulada, sem biblioteca de componentes externa.",
-    stack: ["Next.js", "TypeScript", "CSS", "Visualização de dados"],
-    preview: "/projects/nexus-dashboard.png",
-    live: "https://projeto-02-nexus-dashboard.vercel.app/",
-    github: "https://github.com/pedroassunncao/projeto-02-nexus-dashboard",
-    theme: "wine",
-  },
-  {
-    number: "03",
-    eyebrow: "APPSEC / LABORATÓRIO DEFENSIVO",
-    title: "Sentinel Web Security Lab",
-    shortTitle: "Sentinel",
-    description:
-      "Laboratório demonstrativo para organizar headers HTTP, categorias OWASP, achados e recomendações de segurança web.",
-    detail:
-      "O Sentinel apresenta um conjunto fixo de dados educacionais. Ele não envia requisições ao alvo, não testa vulnerabilidades e não executa exploração.",
-    stack: ["OWASP", "Web Security", "Next.js", "TypeScript"],
-    preview: "/projects/sentinel.png",
-    live: "https://projeto-03-web-security-lab.vercel.app/",
-    github: "https://github.com/pedroassunncao/projeto-03-web-security-lab",
-    theme: "green",
-  },
-];
-
-function ArrowUpRight() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M7 17 17 7M8 7h9v9" />
-    </svg>
-  );
-}
-
-function ArrowLeft() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="m15 18-6-6 6-6" />
-    </svg>
-  );
-}
-
-function ArrowRight() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="m9 18 6-6-6-6" />
-    </svg>
-  );
-}
-
-function GithubIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.5 5.5 0 0 0 19.3 3.7 5.1 5.1 0 0 0 19.2 0S18 0 15 1.5a13.4 13.4 0 0 0-7 0C5 0 3.8 0 3.8 0a5.1 5.1 0 0 0-.1 3.7 5.5 5.5 0 0 0-1.5 3.8c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4" />
-      <path d="M8 19c-3 .9-3-1.5-4.2-2" />
-    </svg>
-  );
-}
-
-export default function ProjectsPage() {
-  const [active, setActive] = useState(0);
-  const [direction, setDirection] = useState<"next" | "prev">("next");
-  const touchStart = useRef<number | null>(null);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const requested = Number(params.get("projeto"));
-    if (requested >= 1 && requested <= projects.length) {
-      setActive(requested - 1);
-    }
-  }, []);
-
-  useEffect(() => {
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "ArrowRight") next();
-      if (event.key === "ArrowLeft") previous();
-    }
-
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [active]);
-
-  function updateUrl(index: number) {
-    const url = new URL(window.location.href);
-    url.searchParams.set("projeto", String(index + 1));
-    window.history.replaceState({}, "", url);
-  }
-
-  function goTo(index: number, nextDirection: "next" | "prev" = "next") {
-    const normalized = (index + projects.length) % projects.length;
-    setDirection(nextDirection);
-    setActive(normalized);
-    updateUrl(normalized);
-  }
-
-  function next() {
-    goTo(active + 1, "next");
-  }
-
-  function previous() {
-    goTo(active - 1, "prev");
-  }
-
-  function handleTouchStart(event: React.TouchEvent) {
-    touchStart.current = event.touches[0]?.clientX ?? null;
-  }
-
-  function handleTouchEnd(event: React.TouchEvent) {
-    if (touchStart.current === null) return;
-    const end = event.changedTouches[0]?.clientX ?? touchStart.current;
-    const distance = touchStart.current - end;
-
-    if (Math.abs(distance) > 55) {
-      distance > 0 ? next() : previous();
-    }
-
-    touchStart.current = null;
-  }
-
-  const project = projects[active];
+export default async function PortfolioPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ projeto?: string }>;
+}) {
+  const requested = (await searchParams).projeto;
+  if (requested === "1") redirect("/projetos/protese-capilar");
+  if (requested === "2") redirect("/projetos/nexus-dashboard");
 
   return (
-    <main className={`projectsPage theme-${project.theme}`}>
-      <header className="projectsHeader">
-        <a className="projectsBrand" href="/" aria-label="Voltar para o início">
-          PA<span>.</span>
-        </a>
-
-        <nav className="projectsNav" aria-label="Navegação">
-          <a href="/">Início</a>
-          <a className="isActive" href="/projetos">Projetos</a>
-          <a href="/#contato">Contato</a>
-        </nav>
-
-        <a className="backPortfolio" href="/">
-          Voltar ao portfólio <ArrowUpRight />
-        </a>
+    <main className="container">
+      <header className="caseHeader">
+        <Link className="brand" href="/">
+          <span className="brandMark">
+            pa<span>.</span>
+          </span>
+          <span className="brandName">
+            Pedro Assunção<small>Design & desenvolvimento web</small>
+          </span>
+        </Link>
+        <Link className="textLink" href="/">
+          ← Voltar ao início
+        </Link>
       </header>
-
-      <section
-        className="showcase"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        <div className="showcaseTop">
-          <div className="showcaseLabel">
-            <span>PROJETOS</span>
-            <i />
-            <strong>{project.number} / 03</strong>
-          </div>
-
-          <div className="showcaseProgress" aria-label={`Projeto ${active + 1} de 3`}>
-            {projects.map((item, index) => (
-              <button
-                type="button"
-                key={item.number}
-                className={active === index ? "isActive" : ""}
-                onClick={() => goTo(index, index >= active ? "next" : "prev")}
-                aria-label={`Abrir projeto ${item.number}: ${item.title}`}
+      <section className="workIndex">
+        <p className="eyebrow">Portfólio / Projetos conceituais</p>
+        <h1>O trabalho, de perto.</h1>
+        <p className="sectionDescription">
+          Veja a apresentação, as escolhas e as versões para celular de cada
+          projeto.
+        </p>
+        <div className="portfolioGrid">
+          {projects.map((project) => (
+            <article
+              className={`portfolioCard ${project.theme}`}
+              key={project.slug}
+            >
+              <Link
+                className="portfolioVisual"
+                href={`/projetos/${project.slug}`}
+                aria-label={`Ver o projeto ${project.title}`}
               >
-                <span>{item.number}</span>
-                <i />
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div
-          className={`showcaseGrid slide-${direction}`}
-          key={`${project.number}-${direction}`}
-        >
-          <div className="projectCopy">
-            <p className="projectEyebrow">{project.eyebrow}</p>
-
-            <h1>
-              {project.title}
-              <span>.</span>
-            </h1>
-
-            <p className="projectLead">{project.description}</p>
-            <p className="projectDetail">{project.detail}</p>
-
-            <div className="projectStack">
-              {project.stack.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
-            </div>
-
-            <div className="projectActions">
-              <a
-                className="projectPrimary"
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ver projeto <ArrowUpRight />
-              </a>
-
-              <a
-                className="projectSecondary"
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GithubIcon />
-                GitHub
-              </a>
-            </div>
-          </div>
-
-          <div className="previewColumn">
-            <div className="previewFrame">
-              <div className="browserBar">
-                <div className="browserDots" aria-hidden="true">
-                  <i />
-                  <i />
-                  <i />
+                <div className="portfolioScreenshot">
+                  <Image
+                    src={project.cover}
+                    alt={`Página de ${project.title}`}
+                    width={1440}
+                    height={1000}
+                    sizes="(max-width:760px) 90vw,43vw"
+                  />
                 </div>
-
-                <div className="browserAddress">
-                  <span>●</span>
-                  {project.live.replace("https://", "").replace(/\/$/, "")}
+                <span className="visualArrow" aria-hidden="true">
+                  ↗
+                </span>
+              </Link>
+              <div className="portfolioCopy">
+                <div className="projectCategory">
+                  <span>{project.category}</span>
+                  <span>Projeto conceitual</span>
                 </div>
-
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Abrir ${project.title}`}
-                >
-                  <ArrowUpRight />
-                </a>
+                <h2>{project.title}</h2>
+                <p>{project.summary}</p>
+                <div className="portfolioLinks">
+                  <Link href={`/projetos/${project.slug}`}>
+                    Conhecer o projeto ↗
+                  </Link>
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Abrir site ↗
+                  </a>
+                </div>
               </div>
-
-              <div className="previewViewport">
-                <Image
-                  src={project.preview}
-                  alt={`Identidade visual do projeto ${project.title}`}
-                  fill
-                  priority={active === 0}
-                  sizes="(max-width: 980px) 92vw, 50vw"
-                />
-                <a
-                  className="previewOverlay"
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Abrir ${project.title} em nova guia`}
-                >
-                  <span>ABRIR PROJETO</span>
-                </a>
-              </div>
-            </div>
-
-            <div className="previewMeta">
-              <div>
-                <span>PROJETO</span>
-                <strong>{project.number}</strong>
-              </div>
-              <div>
-                <span>TIPO</span>
-                <strong>DEMONSTRAÇÃO</strong>
-              </div>
-              <div>
-                <span>FOCO</span>
-                <strong>{project.stack[0]}</strong>
-              </div>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
-
-        <div className="showcaseBottom">
-          <button
-            type="button"
-            className="navArrow"
-            onClick={previous}
-            aria-label="Projeto anterior"
-          >
-            <ArrowLeft />
-            <span>Anterior</span>
-          </button>
-
-          <div className="projectRail" aria-hidden="true">
-            <span>{projects[(active + projects.length - 1) % projects.length].shortTitle}</span>
-            <i>
-              <b style={{ width: `${((active + 1) / projects.length) * 100}%` }} />
-            </i>
-            <span>{projects[(active + 1) % projects.length].shortTitle}</span>
-          </div>
-
-          <button
-            type="button"
-            className="navArrow navArrowNext"
-            onClick={next}
-            aria-label="Próximo projeto"
-          >
-            <span>Próximo</span>
-            <ArrowRight />
-          </button>
-        </div>
+        {requested === "3" && (
+          <aside className="caseNote">
+            <strong>Sentinel — estudo técnico anterior</strong>
+            <p>
+              Este laboratório demonstrativo continua disponível como estudo de
+              interface.
+            </p>
+            <a
+              href="https://projeto-03-web-security-lab.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Abrir o Sentinel ↗
+            </a>
+          </aside>
+        )}
       </section>
-
-      <footer className="projectsFooter">
-        <span>© 2026 Pedro Assunção</span>
-        <p>Frontend e segurança web</p>
-        <span>Use ← → para navegar</span>
+      <section className="caseCta">
+        <h2>
+          Vamos pensar
+          <br />
+          <em>no seu site?</em>
+        </h2>
+        <Link className="button buttonPrimary" href="/#orcamento">
+          Pedir um orçamento ↗
+        </Link>
+      </section>
+      <footer className="caseFooter">
+        <Link href="/">Pedro Assunção</Link>
+        <Link href="/#orcamento">Vamos conversar ↗</Link>
       </footer>
     </main>
   );
