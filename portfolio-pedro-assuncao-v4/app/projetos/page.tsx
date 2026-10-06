@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { projects } from "@/lib/site";
+import { PortfolioShowcase } from "@/components/portfolio-showcase";
 
 export const metadata: Metadata = {
   title: "Portfólio",
@@ -54,51 +54,14 @@ export default async function PortfolioPage({
           Veja a apresentação, as escolhas e as versões para celular de cada
           projeto.
         </p>
-        <div className="portfolioGrid">
-          {projects.map((project) => (
-            <article
-              className={`portfolioCard ${project.theme}`}
+        <div className="portfolioCollection workShowcaseList">
+          {projects.map((project, index) => (
+            <PortfolioShowcase
               key={project.slug}
-            >
-              <Link
-                className="portfolioVisual"
-                href={`/projetos/${project.slug}`}
-                aria-label={`Ver o projeto ${project.title}`}
-              >
-                <div className="portfolioScreenshot">
-                  <Image
-                    src={project.cover}
-                    alt={`Página de ${project.title}`}
-                    width={1440}
-                    height={1000}
-                    sizes="(max-width:760px) 90vw,43vw"
-                  />
-                </div>
-                <span className="visualArrow" aria-hidden="true">
-                  ↗
-                </span>
-              </Link>
-              <div className="portfolioCopy">
-                <div className="projectCategory">
-                  <span>{project.category}</span>
-                  <span>Projeto conceitual</span>
-                </div>
-                <h2>{project.title}</h2>
-                <p>{project.summary}</p>
-                <div className="portfolioLinks">
-                  <Link href={`/projetos/${project.slug}`}>
-                    Conhecer o projeto ↗
-                  </Link>
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Abrir site ↗
-                  </a>
-                </div>
-              </div>
-            </article>
+              project={project}
+              index={index}
+              headingLevel={2}
+            />
           ))}
         </div>
         {requested === "3" && (

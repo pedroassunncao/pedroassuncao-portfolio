@@ -1,5 +1,4 @@
 import { ImageResponse } from "next/og";
-import { contactDisplay } from "@/lib/site";
 
 export const alt =
   "Pedro Assunção — Sites para profissionais e pequenos negócios";
@@ -58,7 +57,7 @@ export default function OpenGraphImage() {
           }}
         >
           <span>Sites · Landing pages · Redesign</span>
-          <span>{contactDisplay}</span>
+          <span>Vamos conversar sobre seu site ↗</span>
         </div>
       </div>
     ),

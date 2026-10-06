@@ -5,10 +5,10 @@ Site comercial para apresentar serviços de criação de sites, mostrar projetos
 ## O que o site oferece
 
 - apresentação de landing pages, sites institucionais e redesign;
-- portfólio com capturas reais das demonstrações e páginas individuais de projeto;
+- portfólio com três estudos, telas exploráveis, versões para celular, escopo e páginas individuais de projeto;
 - explicação das etapas de contratação e perguntas frequentes;
 - formulário de orçamento que prepara uma mensagem para o WhatsApp;
-- contato direto com Pedro pelo número **(71) 98199-1535**;
+- botões com ícone do WhatsApp e mensagem pronta, sem exibir o telefone como texto na página;
 - navegação responsiva, campos com rótulos, validação, foco por teclado e respeito à preferência de movimento reduzido;
 - identidade escura em vinho e rosa, fundos sutis em movimento e uma faixa animada;
 - fontes hospedadas no próprio projeto, imagens otimizadas e metadados de compartilhamento.
@@ -44,7 +44,7 @@ O visitante informa nome, negócio, serviço, prazo e uma descrição. Endereço
 
 **A mensagem não é enviada automaticamente.** O visitante revisa e confirma o envio no WhatsApp. Se a abertura da janela for bloqueada, aparece um link para abrir a conversa novamente. O formulário não usa um serviço de e-mail, não calcula preços e não armazena os dados em um banco.
 
-O telefone é público por definição. A mensagem preenchida é incluída no link entregue ao WhatsApp. Para mudar o número, edite `contactNumber` e `contactDisplay` em `lib/site.ts`; a imagem social usa o mesmo contato.
+O telefone faz parte do endereço de contato, mas não é exibido como texto na página. A mensagem preenchida é incluída no link entregue ao WhatsApp. Para mudar o número, edite `contactNumber` em `lib/site.ts`.
 
 ## Conteúdo e projetos
 
@@ -52,6 +52,11 @@ O telefone é público por definição. A mensagem preenchida é incluída no li
 
 - [Prótese Capilar](https://github.com/pedroassunncao/projeto-protese-capilar): landing page conceitual, em `/projetos/protese-capilar`.
 - [Nexus Dashboard](https://github.com/pedroassunncao/projeto-02-nexus-dashboard): estudo de interface de gestão, em `/projetos/nexus-dashboard`.
+- **Casa Clara**: site institucional conceitual para interiores, em `/projetos/casa-clara`, com demonstração navegável em `/demonstracoes/casa-clara`.
+
+O novo estudo Casa Clara inclui filtros de ambientes, detalhes em uma janela nativa acessível, serviços expansíveis, menu para celular e um formulário que gera um resumo local. O estúdio é fictício; imagens geradas por IA são identificadas como ilustrativas. O formulário da demonstração não envia solicitações nem armazena dados. O botão do WhatsApp nessa página contata Pedro sobre criar um site, não um serviço de interiores.
+
+A apresentação dos trabalhos é reutilizada em `components/portfolio-showcase.tsx`. Cada projeto tem uma galeria e um convite de contato com mensagem específica. Os arquivos e prompts das imagens da Casa Clara estão em `public/demos/casa-clara/ASSETS.md`.
 
 As capturas desktop e mobile ficam em `public/projects`. Atualize-as quando as demonstrações mudarem. Os links antigos `?projeto=1` e `?projeto=2` redirecionam para as novas apresentações. O antigo estudo Sentinel continua acessível pelo link de arquivo em `/projetos?projeto=3`, mas não é divulgado como serviço comercial.
 
@@ -80,9 +85,12 @@ app/
   not-found.tsx             Página de endereço não encontrado
   projetos/page.tsx         Lista do portfólio e links antigos
   projetos/[slug]/page.tsx   Apresentação individual de cada projeto
+  demonstracoes/casa-clara/ Site institucional conceitual navegável
   api/contact/route.ts      Integração de e-mail anterior
+components/                 Galerias do portfólio e ícone do WhatsApp
 lib/site.ts                 Serviços, projetos e WhatsApp
 public/projects/             Capturas das demonstrações
+public/demos/casa-clara/      Ambientes ilustrativos e prompts de geração
 public/fonts/                Fontes e licença SIL OFL 1.1
 next.config.ts               Configuração e headers HTTP
 ```

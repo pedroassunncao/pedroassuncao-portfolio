@@ -658,110 +658,354 @@ h2 em {
 .portfolioSection .sectionHeading > div > p {
   color: #70666d;
 }
-.portfolioGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 38px;
-}
-.portfolioVisual {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  padding: 40px 28px 0;
-  border-radius: 7px;
-  background: #e0d7c5;
-  aspect-ratio: 1.5;
-}
-.wine .portfolioVisual {
-  background: #d6c4ce;
-}
-.portfolioScreenshot {
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  border-radius: 5px 5px 0 0;
-  box-shadow: 0 15px 40px rgba(30, 20, 30, 0.15);
-  transform: rotate(-2deg);
-  transition: transform 0.4s;
-}
-.wine .portfolioScreenshot {
-  transform: rotate(2deg);
-}
-.portfolioVisual:hover .portfolioScreenshot {
-  transform: rotate(0) translateY(-5px);
-}
-.portfolioScreenshot img {
-  display: block;
-}
-.projectNumber {
-  position: absolute;
-  top: 15px;
-  left: 20px;
-  font:
-    10px ui-monospace,
-    monospace;
-  color: #6e615e;
-}
-.visualArrow {
-  position: absolute;
-  bottom: 15px;
-  right: 16px;
-  display: grid;
-  place-items: center;
-  height: 38px;
-  width: 38px;
-  border-radius: 50%;
-  color: #f5f1eb;
-  background: #26212a;
-}
-.portfolioCopy {
-  padding: 23px 0;
-}
-.projectCategory {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  font-size: 9px;
-  color: #796e74;
-  letter-spacing: 0.03em;
-}
-.projectCategory > span:last-child {
-  color: #8b7681;
-}
-.portfolioCopy h3 {
-  font-size: 26px;
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  margin: 13px 0 10px;
-}
-.portfolioCopy p {
-  max-width: 400px;
-  font-size: 13px;
-  line-height: 1.7;
-  color: #70656c;
-}
-.portfolioLinks {
-  display: flex;
-  gap: 25px;
-  margin-top: 24px;
-}
-.portfolioLinks a {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  font-size: 11px;
-}
-.portfolioLinks a:hover {
-  color: #a84161;
-}
-.portfolioLinks .arrow {
-  font-size: 16px;
-}
 .portfolioFootnote {
   border-top: 1px solid rgba(30, 20, 30, 0.13);
   margin: 20px 0 0;
   padding-top: 25px;
   color: #76676f;
   font-size: 11px;
+}
+.workShowcaseList {
+  display: grid;
+  gap: 65px;
+}
+.portfolioCollection {
+  background: #f0ece5;
+  padding: 40px;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+.workShowcase {
+  color: #242025;
+  min-width: 0;
+}
+.workShowcaseTop {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-top: 1px solid #d5cdc8;
+  padding-block: 22px;
+  font-size: 10px;
+  color: #685c62;
+  letter-spacing: 0.06em;
+}
+.workShowcaseTop > span:last-child {
+  margin-left: auto;
+}
+.workIndexNumber {
+  font:
+    italic 26px Georgia,
+    serif;
+  color: #925b70;
+}
+.workShowcaseGrid {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 45px;
+  align-items: center;
+}
+.projectGallery {
+  min-width: 0;
+  --gallery-bg: #e4dac5;
+  --gallery-ink: #554632;
+}
+.projectGallery.wine {
+  --gallery-bg: #dbcbd4;
+  --gallery-ink: #623e51;
+}
+.projectGallery.olive {
+  --gallery-bg: #d7d9cc;
+  --gallery-ink: #40503c;
+}
+.galleryStage {
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--gallery-bg);
+}
+.withPhone .galleryStage {
+  padding: 35px 25px 50px;
+}
+.galleryBrowser {
+  border: 1px solid #39313b;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 18px 32px #29202626;
+  background: #0c0b0d;
+}
+.withPhone .galleryBrowser {
+  width: 89%;
+  transform: rotate(-2deg);
+}
+.wine.withPhone .galleryBrowser {
+  transform: rotate(2deg);
+}
+.galleryBrowserBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: #171419;
+  color: #ada1aa;
+  padding: 12px;
+  font-size: 8px;
+}
+.galleryBrowserBar > span:first-child {
+  letter-spacing: 3px;
+  font-size: 6px;
+  color: #72636e;
+}
+.galleryBrowserBar > span:nth-child(2) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.galleryBrowser img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 1.44;
+  object-fit: cover;
+}
+.galleryPhone {
+  position: absolute;
+  bottom: 25px;
+  right: 20px;
+  width: 24%;
+  aspect-ratio: 0.48;
+  border: 5px solid #29242a;
+  border-radius: 22px;
+  box-shadow: 0 15px 25px #0004;
+  overflow: hidden;
+  background: #0c0b0d;
+  transform: rotate(3deg);
+}
+.galleryPhone > span {
+  position: absolute;
+  height: 9px;
+  width: 35%;
+  top: 0;
+  left: 32.5%;
+  border-radius: 0 0 8px 8px;
+  background: #29242a;
+  z-index: 1;
+}
+.galleryPhone img {
+  display: block;
+  width: 100%;
+}
+.galleryControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 15px;
+  flex-wrap: wrap;
+}
+.galleryControls button {
+  border: 1px solid #c4b7bb;
+  border-radius: 30px;
+  padding: 10px 14px;
+  font-size: 10px;
+  background: transparent;
+  color: #66545e;
+}
+.galleryControls button[aria-pressed="true"] {
+  background: #29222b;
+  border-color: #29222b;
+  color: #fff8f1;
+}
+.galleryControls button:hover {
+  border-color: #6e4c5d;
+}
+.galleryControls button:focus-visible {
+  outline-color: #8e3857;
+  outline-offset: 3px;
+}
+.galleryCounter {
+  margin-left: auto;
+  font:
+    10px ui-monospace,
+    monospace;
+  color: #76666e;
+}
+.workType {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 9px;
+  color: #89596e;
+  margin: 0 0 12px;
+}
+.workShowcaseCopy h2,
+.workShowcaseCopy h3 {
+  font:
+    500 clamp(28px, 3vw, 43px) / 1.15 "Manrope",
+    Arial,
+    sans-serif;
+  letter-spacing: -0.06em;
+  margin: 0 0 20px;
+}
+.workShowcaseCopy h2 a,
+.workShowcaseCopy h3 a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.workShowcaseCopy h2 span,
+.workShowcaseCopy h3 span {
+  font:
+    24px "DM Sans",
+    Arial,
+    sans-serif;
+  color: #986a7e;
+}
+.workHeadline {
+  font:
+    21px/1.4 Georgia,
+    serif;
+  margin: 0 0 15px;
+  color: #55424c;
+}
+.workSummary {
+  font-size: 12px;
+  line-height: 1.85;
+  color: #756970;
+  margin: 0 0 20px;
+}
+.workScope {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.workScope span {
+  font-size: 9px;
+  border: 1px solid #d6cdce;
+  border-radius: 30px;
+  padding: 7px 9px;
+  color: #74616b;
+}
+.workFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+.workFeatures li {
+  display: flex;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #dcd4d1;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #594952;
+}
+.workFeatures li span {
+  color: #9e5b77;
+}
+.workActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  align-items: center;
+  margin-top: 25px;
+}
+.workActions a {
+  display: flex;
+  gap: 20px;
+  font-size: 10px;
+  align-items: center;
+  padding-block: 13px;
+}
+.workActions .workDetails {
+  background: #29222b;
+  color: #f9f3ed;
+  border-radius: 4px;
+  padding: 13px 16px;
+}
+.workActions a:hover {
+  color: #a24263;
+}
+.workActions .workDetails:hover {
+  background: #593748;
+  color: #f9f3ed;
+}
+.workContact {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: 10px;
+  color: #576450;
+}
+.workContact .whatsappIcon {
+  width: 17px;
+  height: 17px;
+}
+.workContact:hover {
+  color: #174d30;
+}
+.caseGallery {
+  padding: 15px;
+  background: #f0ece5;
+  border-radius: 8px;
+}
+@media (max-width: 1000px) {
+  .workShowcaseGrid {
+    gap: 25px;
+    grid-template-columns: 1.25fr 1fr;
+  }
+  .workShowcaseCopy h2,
+  .workShowcaseCopy h3 {
+    font-size: 30px;
+  }
+}
+@media (max-width: 760px) {
+  .workShowcaseGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .workShowcaseList {
+    gap: 45px;
+  }
+  .workShowcaseTop {
+    gap: 12px;
+    font-size: 9px;
+  }
+  .workShowcaseCopy h2,
+  .workShowcaseCopy h3 {
+    font-size: 34px;
+  }
+  .portfolioCollection {
+    padding: 20px;
+  }
+  .galleryStage {
+    padding: 18px;
+  }
+  .withPhone .galleryStage {
+    padding: 25px 18px 38px;
+  }
+  .galleryPhone {
+    border-width: 4px;
+    right: 14px;
+    bottom: 16px;
+    border-radius: 15px;
+  }
+  .galleryBrowserBar {
+    padding: 8px;
+    font-size: 6px;
+  }
+  .galleryBrowserBar > span:first-child {
+    font-size: 4px;
+  }
+  .galleryControls button {
+    padding: 10px;
+    font-size: 9px;
+  }
+  .workSummary {
+    max-width: none;
+  }
+  .caseGallery {
+    padding: 10px;
+  }
 }
 .processGrid {
   display: grid;
@@ -951,18 +1195,34 @@ h2 em {
   font-size: 11px;
   color: var(--muted);
 }
-.directContact strong {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  margin-top: 13px;
-  font:
-    500 24px "Manrope",
-    Arial,
-    sans-serif;
+.directContact .button {
+  margin-top: 16px;
 }
-.directContact:hover strong {
-  color: var(--accent-bright);
+.directContact > p {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 310px;
+}
+.whatsappButton {
+  background: #73d9a3;
+  color: #102b1c;
+  gap: 12px;
+}
+.whatsappButton:hover {
+  background: #91e7ba;
+  transform: translateY(-2px);
+}
+.whatsappIcon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  stroke: none;
+}
+.quoteStatus a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 .quoteCopy > small {
   display: block;
@@ -1214,12 +1474,6 @@ h2 em {
   align-items: center;
   margin-top: 30px;
 }
-.caseScreenshot {
-  display: block;
-  width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-}
 .caseStory {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1306,21 +1560,6 @@ h2 em {
 }
 .workIndex {
   padding-block: 70px;
-}
-.workIndex > .portfolioGrid {
-  margin-top: 50px;
-}
-.workIndex .portfolioCard {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  overflow: hidden;
-}
-.workIndex .portfolioCopy {
-  padding: 25px;
-}
-.workIndex .portfolioCopy p,
-.workIndex .projectCategory {
-  color: var(--muted);
 }
 .workIndex h1 {
   font-size: clamp(45px, 6vw, 75px);
@@ -1555,19 +1794,6 @@ h2 em {
     margin-top: 14px;
     max-width: 400px;
   }
-  .portfolioGrid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-  .portfolioVisual {
-    padding-top: 40px;
-  }
-  .portfolioCopy h3 {
-    font-size: 27px;
-  }
-  .portfolioCopy p {
-    max-width: 480px;
-  }
   .portfolioFootnote {
     line-height: 1.8;
   }
@@ -1662,10 +1888,6 @@ h2 em {
   }
   .quoteForm {
     padding: 23px 18px;
-  }
-  .portfolioVisual {
-    aspect-ratio: 1.3;
-    padding-inline: 18px;
   }
   .projectCategory {
     font-size: 8px;

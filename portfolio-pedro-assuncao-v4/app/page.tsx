@@ -3,7 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { contactDisplay, projects, services, whatsappUrl } from "@/lib/site";
+import { projects, services, whatsappUrl } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/whatsapp-icon";
+import { PortfolioShowcase } from "@/components/portfolio-showcase";
 
 const benefits = [
   "Sites institucionais",
@@ -216,7 +218,7 @@ export default function Home() {
         >
           <div className="showcaseCaption">
             <span>DO PLANEJAMENTO À PÁGINA NO AR</span>
-            <span>01 — 02</span>
+            <span>01 — 03</span>
           </div>
           <Link
             className="heroWindow heroWindowMain"
@@ -360,62 +362,24 @@ export default function Home() {
             <p className="eyebrow">02 / Portfólio</p>
             <div>
               <h2>
-                Veja a ideia
+                Cada negócio,
                 <br />
-                <em>ganhar forma.</em>
+                <em>uma identidade.</em>
               </h2>
               <p>
-                Projetos conceituais que mostram meu cuidado com o visual, o
-                conteúdo e a navegação.
+                Explore as telas, veja as escolhas de cada projeto e experimente
+                as demonstrações. Do atendimento individual à apresentação de um
+                estúdio.
               </p>
             </div>
           </div>
-          <div className="portfolioGrid">
+          <div className="workShowcaseList">
             {projects.map((project, index) => (
-              <article
-                className={`portfolioCard ${project.theme}`}
+              <PortfolioShowcase
                 key={project.slug}
-              >
-                <Link
-                  className="portfolioVisual"
-                  href={`/projetos/${project.slug}`}
-                  aria-label={`Ver detalhes de ${project.title}`}
-                >
-                  <div className="portfolioScreenshot">
-                    <Image
-                      src={project.cover}
-                      alt={`Página do projeto ${project.title} no computador`}
-                      width={1440}
-                      height={1000}
-                      sizes="(max-width: 760px) 90vw, 43vw"
-                    />
-                  </div>
-                  <span className="projectNumber">0{index + 1}</span>
-                  <span className="visualArrow">
-                    <Arrow />
-                  </span>
-                </Link>
-                <div className="portfolioCopy">
-                  <div className="projectCategory">
-                    <span>{project.category}</span>
-                    <span>Projeto conceitual</span>
-                  </div>
-                  <h3>{project.title}</h3>
-                  <p>{project.summary}</p>
-                  <div className="portfolioLinks">
-                    <Link href={`/projetos/${project.slug}`}>
-                      Conhecer o projeto <Arrow />
-                    </Link>
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Abrir site <Arrow />
-                    </a>
-                  </div>
-                </div>
-              </article>
+                project={project}
+                index={index}
+              />
             ))}
           </div>
           <p className="portfolioFootnote">
@@ -492,7 +456,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Me conte sobre seu negócio <Arrow />
+              <WhatsAppIcon /> Me conte sobre seu negócio <Arrow />
             </a>
           </div>
         </div>
@@ -518,7 +482,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Tirar uma dúvida <Arrow />
+              <WhatsAppIcon /> Tirar uma dúvida <Arrow />
             </a>
           </div>
           <div className="faqList">
@@ -549,17 +513,20 @@ export default function Home() {
               conversa no WhatsApp, e eu retorno para entender os detalhes e
               preparar uma proposta.
             </p>
-            <a
-              className="directContact"
-              href={whatsappUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <div className="directContact">
               <span>Prefere começar com uma conversa?</span>
-              <strong>
-                {contactDisplay} <Arrow />
-              </strong>
-            </a>
+              <a
+                className="button whatsappButton"
+                href={whatsappUrl(
+                  "Olá, Pedro! Vi seu portfólio e quero conversar sobre um site para o meu negócio.",
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <WhatsAppIcon /> Conversar no WhatsApp <Arrow />
+              </a>
+              <p>Me conte sua ideia. A mensagem já vai pronta para começar.</p>
+            </div>
             <small>
               O valor e o prazo são combinados depois de definirmos o escopo.
             </small>
@@ -665,7 +632,7 @@ export default function Home() {
               />
             </label>
             <button className="button buttonPrimary quoteSubmit" type="submit">
-              Continuar no WhatsApp <Arrow />
+              <WhatsAppIcon /> Continuar no WhatsApp <Arrow />
             </button>
             <p className="formNote">
               Você revisa a mensagem no WhatsApp e confirma o envio por lá.
@@ -676,7 +643,7 @@ export default function Home() {
                   Seu resumo está pronto. Conclua o envio no WhatsApp.
                 </span>
                 <a href={preparedUrl} target="_blank" rel="noopener noreferrer">
-                  Abrir a conversa novamente ↗
+                  <WhatsAppIcon /> Abrir a conversa novamente ↗
                 </a>
               </div>
             )}
@@ -713,12 +680,12 @@ export default function Home() {
         href={whatsappUrl()}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Conversar com Pedro pelo WhatsApp ${contactDisplay}`}
+        aria-label="Conversar com Pedro no WhatsApp"
       >
         <span className="chatMark" aria-hidden="true">
-          ↗
+          <WhatsAppIcon />
         </span>
-        <span>Fale comigo</span>
+        <span>Vamos conversar</span>
       </a>
     </main>
   );

@@ -1,5 +1,4 @@
 export const contactNumber = "5571981991535";
-export const contactDisplay = "(71) 98199-1535";
 
 export function whatsappUrl(
   message = "Olá, Pedro! Gostaria de conversar sobre um site para o meu negócio.",
@@ -55,6 +54,16 @@ export const projects = [
     theme: "gold",
     cover: "/projects/capilar-desktop.png",
     mobile: "/projects/capilar-mobile.png",
+    gallery: [
+      { label: "Apresentação", src: "/projects/capilar-desktop.png" },
+      { label: "Dúvidas e contato", src: "/projects/capilar-details.png" },
+    ],
+    headline: "Apresentar um serviço. Dar segurança para o primeiro contato.",
+    scope: [
+      "Direção visual",
+      "Organização do conteúdo",
+      "Desenvolvimento responsivo",
+    ],
     live: "https://projeto-protese-capilar-alpha.vercel.app/",
     github: "https://github.com/pedroassunncao/projeto-protese-capilar",
     summary:
@@ -81,6 +90,16 @@ export const projects = [
     theme: "wine",
     cover: "/projects/nexus-desktop.png",
     mobile: "/projects/nexus-mobile.png",
+    gallery: [
+      { label: "Visão geral", src: "/projects/nexus-desktop.png" },
+      { label: "Lista de projetos", src: "/projects/nexus-projects.png" },
+    ],
+    headline: "Informação organizada para quem precisa decidir.",
+    scope: [
+      "Design de interface",
+      "Componentes interativos",
+      "Versão para celular",
+    ],
     live: "https://projeto-02-nexus-dashboard.vercel.app/",
     github: "https://github.com/pedroassunncao/projeto-02-nexus-dashboard",
     summary:
@@ -98,6 +117,43 @@ export const projects = [
       "Notificações e estados interativos",
     ],
     note: "Projeto conceitual com dados locais e simulados. Os indicadores não são resultados de clientes. A demonstração não se conecta a um sistema de gestão real.",
+  },
+  {
+    slug: "casa-clara",
+    title: "Casa Clara",
+    category: "Interiores & espaços",
+    type: "Site institucional",
+    theme: "olive",
+    cover: "/projects/casa-desktop.png",
+    mobile: "/projects/casa-mobile.png",
+    gallery: [
+      { label: "Apresentação", src: "/projects/casa-desktop.png" },
+      { label: "Galeria de ambientes", src: "/projects/casa-gallery.png" },
+    ],
+    headline: "Um espaço para mostrar o cuidado por trás de cada ambiente.",
+    scope: [
+      "Identidade editorial",
+      "Galeria com filtros",
+      "Formulário demonstrativo",
+    ],
+    live: "/demonstracoes/casa-clara",
+    github:
+      "https://github.com/pedroassunncao/pedroassuncao-portfolio/tree/main/portfolio-pedro-assuncao-v4/app/demonstracoes/casa-clara",
+    summary:
+      "Site institucional para um estúdio fictício de interiores, com foco nos ambientes, nos serviços e na conversa inicial.",
+    intro:
+      "Projeto conceitual de um site institucional para interiores. A proposta combina uma identidade clara, imagens amplas e conteúdo que explica o serviço sem depender de termos técnicos.",
+    challenge:
+      "Criar uma apresentação em que os ambientes tenham espaço, mas o visitante também entenda os serviços e saiba como iniciar uma conversa.",
+    solution:
+      "Uma identidade em tons naturais, tipografia editorial e uma galeria que pode ser filtrada por ambiente. Cada estudo abre em uma janela com mais detalhes, e um formulário demonstra a organização de um pedido de projeto.",
+    features: [
+      "Galeria filtrada por tipo de ambiente",
+      "Detalhes dos estudos em janela acessível",
+      "Menu e layout adaptados para celular",
+      "Resumo de pedido de projeto sem envio real",
+    ],
+    note: "Estúdio fictício criado para o portfólio. As imagens dos ambientes foram geradas por IA e são estudos ilustrativos, não obras executadas. O formulário gera apenas uma simulação local; não existe contratação de serviços de interiores.",
   },
 ] as const;
 

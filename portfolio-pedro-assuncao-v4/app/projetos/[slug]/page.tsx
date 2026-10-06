@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects, whatsappUrl } from "@/lib/site";
+import { ProjectGallery } from "@/components/portfolio-showcase";
+import { WhatsAppIcon } from "@/components/whatsapp-icon";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -77,15 +79,9 @@ export default async function ProjectPage({ params }: Props) {
           </Link>
         </div>
       </section>
-      <Image
-        className="caseScreenshot"
-        src={project.cover}
-        alt={`Projeto ${project.title} em uma tela de computador`}
-        width={1440}
-        height={1000}
-        priority
-        sizes="(max-width: 760px) 90vw, 85vw"
-      />
+      <div className="caseGallery">
+        <ProjectGallery project={project} />
+      </div>
       <section className="caseStory">
         <div>
           <h2>O ponto de partida</h2>
@@ -145,7 +141,7 @@ export default async function ProjectPage({ params }: Props) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Falar com Pedro no WhatsApp ↗
+          <WhatsAppIcon /> Falar com Pedro no WhatsApp ↗
         </a>
       </section>
       <footer className="caseFooter">
